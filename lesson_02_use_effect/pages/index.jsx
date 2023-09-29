@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import Card from "@/components/Card";
+import Loader from "@/components/Loader";
 export default function Home() {
   const [blogs, setBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
@@ -12,6 +14,7 @@ export default function Home() {
     const data = await res.json();
     console.log(data);
     setBlogs(data);
+    setIsLoading(false);
   };
   function handleNext() {
     console.log("daraagiin huudas darlaa");
@@ -23,11 +26,14 @@ export default function Home() {
         <h2 className=" text-[#181A2A] font-semibold text-[24px] ">
           All blog post
         </h2>
-        <div className="grid grid-cols-3 gap-3">
-          {blogs.map((blog, i) => (
-            <Card blog={blog} />
-          ))}
-        </div>
+        {isLoading && <Loader />}
+        {!isLoading && (
+          <div className="grid grid-cols-3 gap-3 justify-center">
+            {blogs.map((blog, i) => (
+              <Card blog={blog} />
+            ))}
+          </div>
+        )}
         <div className="flex justify-center my-4">
           <button
             onClick={handleNext}
