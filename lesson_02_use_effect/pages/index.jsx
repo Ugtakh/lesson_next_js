@@ -14,18 +14,27 @@ export default function Home() {
     setBlogs(data);
   };
   function handleNext() {
-    console.log("daraagiin huudas");
+    console.log("daraagiin huudas darlaa");
   }
 
   return (
     <main className={`container mx-auto`}>
       <section>
-        <h2>All blog post</h2>
+        <h2 className=" text-[#181A2A] font-semibold text-[24px] ">
+          All blog post
+        </h2>
         <div className="grid grid-cols-3 gap-3">
           {blogs.map((blog, i) => (
             <Card blog={blog} />
           ))}
-          <button onClick={handleNext}>next</button>
+        </div>
+        <div className="flex justify-center my-4">
+          <button
+            onClick={handleNext}
+            className="border px-5 py-3 rounded-[6px] hover:bg-green-600 hover:text-white active:bg-green-900 active:text-white"
+          >
+            Next
+          </button>
         </div>
       </section>
     </main>

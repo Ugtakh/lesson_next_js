@@ -3,7 +3,7 @@ import React from "react";
 const Navbar = () => {
   return (
     <div className="container mx-auto">
-      <div className="flex justify-between p-5">
+      <div className="flex justify-between p-5 items-center">
         <a href="/">
           <img src="/logo.svg" alt="logo" />
         </a>
