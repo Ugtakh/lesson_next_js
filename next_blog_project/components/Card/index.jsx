@@ -8,7 +8,7 @@ const Card = ({ blog }) => {
     <Link href={"/blog/" + blog.id}>
       <div className="w-full border flex flex-col p-4 gap-4 rounded-[16px] items-center">
         <div className="w-[360px] h-[240px] relative">
-          <Image
+          <img
             src={blog.cover_image ? blog.cover_image : "/default.avif"}
             className="rounded-[6px]"
             fill
@@ -23,7 +23,7 @@ const Card = ({ blog }) => {
           <span className="text-[#4B6BFB] bg-[#4B6BFB]/5 px-[10px] py-1 block rounded-[6px]">
             {blog?.type_of}
           </span>
-          <h2 className=" text-[#181A2A] font-semibold text-2xl truncate">
+          <h2 className=" text-[#181A2A] font-semibold text-2xl">
             {blog.title}
           </h2>
           <div className="flex items-center gap-2">
