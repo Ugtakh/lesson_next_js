@@ -7,7 +7,7 @@ const Card = ({ blog }) => {
   return (
     <Link href={"/blog/" + blog.id}>
       <div className="w-full border flex flex-col p-4 gap-4 rounded-[16px] items-center">
-        <div className="w-[360px] h-[240px] relative">
+        <div className="w-full h-[240px] relative">
           <img
             src={blog.cover_image ? blog.cover_image : "/default.avif"}
             className="rounded-[6px]"
