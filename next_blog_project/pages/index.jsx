@@ -39,11 +39,12 @@ export default function Home() {
         <title>Blog website</title>
         <meta property="og:title" content="Meta blog" />
         <meta
-          name="description"
+          property="og:description"
           content="Check out iPhone 12 XR Pro and iPhone 12 Pro Max. Visit your local store and for expert advice."
           key="desc"
         />
         <meta property="og:image" content="/default.avif" />
+        <meta property="og:image:alt" content="medee zurag" />
       </Head>
       <main className={`container mx-auto`}>
         <section>
