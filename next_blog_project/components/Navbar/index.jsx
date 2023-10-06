@@ -1,16 +1,46 @@
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
+const navigations = [
+  {
+    name: "Home",
+    path: "/",
+  },
+  {
+    name: "Blog",
+    path: "/blog",
+  },
+  {
+    name: "Contact",
+    path: "/contact",
+  },
+];
+
 const Navbar = () => {
+  const isActive = usePathname();
+  console.log("blog", isActive);
+
   return (
-    <div className="container mx-auto">
+    <div className="h-24 mx-auto border-b">
       <div className="flex justify-between p-5 items-center">
         <a href="/">
-          <img src="/logo.svg" alt="logo" />
+          <img src="/images/logos/logo-with-text.svg" alt="logo" />
         </a>
         <div className="flex gap-12">
-          <a href="/">Home</a>
-          <a href="/blog">Blog</a>
-          <a href="/contact">Contact</a>
+          {navigations.map((navigation, i) => (
+            <Link
+              className={`font-bold transition-all duration-75  ${
+                isActive === navigation.path
+                  ? "text-red-500"
+                  : "hover:text-red-500 "
+              }`}
+              key={i}
+              href={navigation.path}
+            >
+              {navigation.name}
+            </Link>
+          ))}
         </div>
         <input type="text" placeholder="Search" className="p-4" />
       </div>

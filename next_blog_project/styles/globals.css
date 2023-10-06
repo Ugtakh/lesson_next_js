@@ -7,13 +7,11 @@
 }
 
 .blog-content h2 {
-  @apply text-2xl;
-  @apply font-semibold;
+  @apply text-2xl font-semibold;
 }
 
 .blog-content h4 {
-  @apply text-lg;
-  @apply font-semibold;
+  @apply text-lg font-semibold;
 }
 
 .blog-content ol {
