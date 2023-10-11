@@ -5,7 +5,6 @@ import { getData } from "@/utils/functions";
 
 export default function Home({ blogs }) {
   const [pages, setPages] = useState(3);
-  console.log("Blogs", blogs);
 
   return (
     <main className={`container mx-auto`}>
@@ -14,7 +13,7 @@ export default function Home({ blogs }) {
           <>
             <h1>Recent Blogs</h1>
             <h2 className=" text-[#181A2A] font-semibold text-[24px] ">
-              All blog post
+              Blog posts
             </h2>
             <div className="grid grid-cols-3 gap-3 ">
               {blogs.map((blog, i) => (
@@ -39,10 +38,10 @@ export default function Home({ blogs }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(`https://dev.to/api/articles?per_page=9`);
   const blogs = await res.json();
-  console.log("RES", blogs);
+  console.log("Server Side Work");
 
   return {
     props: {
@@ -50,3 +49,15 @@ export async function getStaticProps() {
     },
   };
 }
+
+// export async function getStaticProps() {
+//   const res = await fetch(`https://dev.to/api/articles?per_page=9`);
+//   const blogs = await res.json();
+//   console.log("Static Props Work");
+
+//   return {
+//     props: {
+//       blogs,
+//     },
+//   };
+// }

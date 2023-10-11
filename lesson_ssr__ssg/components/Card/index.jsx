@@ -19,7 +19,9 @@ const Card = ({ blog }) => {
           </span>
           <h2 className="text-2xl font-semibold truncate">{blog.title}</h2>
           <div className="flex items-center gap-2 ">
-            <img
+            <Image
+              width={100}
+              height={100}
               src={blog.user.profile_image}
               className="w-[36px] h-[36px] rounded-full"
             />
