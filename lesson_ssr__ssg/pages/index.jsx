@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "@/components/Card";
 import Loader from "@/components/Loader";
-import { getData } from "@/utils/functions";
 
 export default function Home({ blogs }) {
   const [pages, setPages] = useState(3);
@@ -17,7 +16,7 @@ export default function Home({ blogs }) {
             </h2>
             <div className="grid grid-cols-3 gap-3 ">
               {blogs.map((blog, i) => (
-                <Card blog={blog} />
+                <Card key={i} blog={blog} />
               ))}
               List
             </div>
