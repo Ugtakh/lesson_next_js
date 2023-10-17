@@ -1,13 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Card from "@/components/Card";
 import Loader from "@/components/Loader";
+import { useRouter } from "next/router";
 
-export default function Home({ blogs }) {
-  const [pages, setPages] = useState(3);
+export default function Home({ blogs, page }) {
+  const router = useRouter();
+
+  const myRef = useRef(null);
+
+  useEffect(() => {
+    myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
+  });
 
   return (
     <main className={`container mx-auto`}>
-      <section>
+      <section ref={myRef}>
         {
           <>
             <h1>Recent Blogs</h1>
@@ -24,6 +31,8 @@ export default function Home({ blogs }) {
               <button
                 onClick={() => {
                   console.log("Clicked");
+                  const pg = Number(page) + 3;
+                  router.replace("?page=" + pg);
                 }}
                 className="border px-5 py-3 rounded-[6px] hover:bg-green-600 hover:text-white active:bg-green-900 active:text-white"
               >
@@ -37,14 +46,18 @@ export default function Home({ blogs }) {
   );
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(`https://dev.to/api/articles?per_page=9`);
+export async function getServerSideProps(context) {
+  console.log(context);
+  let { page } = context.query;
+  page = page || 3;
+  const res = await fetch(`https://dev.to/api/articles?per_page=${page}`);
   const blogs = await res.json();
   console.log("Server Side Work");
 
   return {
     props: {
       blogs,
+      page,
     },
   };
 }
