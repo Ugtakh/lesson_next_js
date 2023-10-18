@@ -17,9 +17,8 @@ const navigations = [
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ setSearchTitle }) => {
   const isActive = usePathname();
-  console.log("blog", isActive);
 
   return (
     <div className="h-24 mx-auto border-b">
@@ -42,7 +41,14 @@ const Navbar = () => {
             </Link>
           ))}
         </div>
-        <input type="text" placeholder="Search" className="p-4" />
+        <input
+          type="text"
+          placeholder="Search"
+          className="p-4"
+          onChange={(e) => {
+            setSearchTitle(e.target.value);
+          }}
+        />
       </div>
     </div>
   );
