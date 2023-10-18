@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Layout from "@/components/Layout";
 
 export default function Home({ blogs, page }) {
+  console.log("BLOG", blogs);
   const router = useRouter();
   const myRef = useRef(null);
 
@@ -11,7 +12,8 @@ export default function Home({ blogs, page }) {
 
   useEffect(() => {
     myRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-  });
+    setBlogList(blogs);
+  }, [blogs]);
 
   const searchBlog = (searchTitle) => {
     const findBlog = blogs.filter((blog) =>
